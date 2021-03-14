@@ -11,7 +11,19 @@ public class DBMethods {
 	private Connection conn = null;
 	private ResultSet rs = null;
 	
-	public void Connection(){
+	
+	
+	//###################
+	//Methods
+	
+	
+	
+	
+	
+	//###################
+	//Basic Stuff
+	
+	public void Connect(){
 		try{
 			String url = "jdbc:sqlite:C:/Users/Marci/Documents/Egyetem (BSC)/4. félév/Adatbázis rendszerk II/DatabaseGyak01/empdb.db";
 			conn = DriverManager.getConnection(url);
@@ -30,5 +42,21 @@ public class DBMethods {
 			System.out.println("hibás driver regisztráció!" +e.getMessage());
 		}
 	}
+	
+	
+	public void CommandExecute(String str) {
+		Connect();
+		String sqlp = str;
+		try {
+			s = conn.createStatement();
+			s.execute(sqlp);
+			System.out.println("Done!");
+		}catch(SQLException e) {
+			System.out.println("Problem: " + e);
+		}
+		
+	}
+	
+	
 
 }
