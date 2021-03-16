@@ -24,6 +24,13 @@ public class DBMethods {
 	//###################
 	//Basic Stuff
 	
+	
+	public void Start() {
+		Connect();
+		Reg();
+	}
+	
+	
 	public void Connect(){
 		try{
 			String url = "jdbc:sqlite:C:/Users/Marci/Documents/Egyetem (BSC)/4. félév/Adatbázis rendszerk II/DatabaseGyak01/empdb.db";
@@ -43,6 +50,17 @@ public class DBMethods {
 			System.out.println("hibás driver regisztráció!" +e.getMessage());
 		}
 	}
+	
+	
+	public void disConnect() {
+		try {
+			conn.close();
+			System.out.println("Disconnected!");
+		}catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
 	
 	
 	public void CommandExecute(String str) {
