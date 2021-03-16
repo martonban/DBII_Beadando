@@ -60,7 +60,9 @@ public class DevTool extends JFrame {
 		JButton btnNewButton = new JButton("Enter");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dbm.CommandExecute(sqlField.getText());
+				//dbm.CommandExecute(sqlField.getText());
+				System.out.println(dbm.signIn("karvaszki22", "erosjelszo"));
+				
 			}
 		});
 		btnNewButton.setBounds(10, 232, 85, 21);

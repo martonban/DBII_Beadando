@@ -16,6 +16,25 @@ public class DBMethods {
 	//###################
 	//Methods
 	
+	public int signIn(String name, String pswd) {
+		Connect();
+		int pc = -1;
+		String sqlp = "select count(*) pc from admin where name ='"+name+"' and pass='"+pswd+"';";
+		try {
+			s = conn.createStatement();
+			rs = s.executeQuery(sqlp);
+			while(rs.next()) {
+				pc = rs.getInt("pc");
+			}
+			rs.close();
+		}catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		disConnect();
+		return pc;
+	}
+	
+	
 	
 	
 	
@@ -25,15 +44,10 @@ public class DBMethods {
 	//Basic Stuff
 	
 	
-	public void Start() {
-		Connect();
-		Reg();
-	}
-	
 	
 	public void Connect(){
 		try{
-			String url = "jdbc:sqlite:C:/Users/Marci/Documents/Egyetem (BSC)/4. félév/Adatbázis rendszerk II/DatabaseGyak01/empdb.db";
+			String url = "jdbc:sqlite:C:/Users/Marci/Documents/Egyetem (BSC)/4. félév/Adatbázis rendszerk II/DatabaseGyak01/adatb.db";
 			conn = DriverManager.getConnection(url);
 			System.out.println(" OK!");
 		}catch(SQLException e) {
