@@ -80,6 +80,11 @@ public class SignIn extends JDialog {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(113, 90, 116, 19);
 		getContentPane().add(passwordField);
+		
+		JLabel lblNewLabel_1 = new JLabel("Sing In:");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_1.setBounds(10, 21, 86, 13);
+		getContentPane().add(lblNewLabel_1);
 
 	}
 }
