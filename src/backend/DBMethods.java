@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class DBMethods {
 	private Statement s = null;
@@ -35,7 +36,22 @@ public class DBMethods {
 	}
 	
 	
-	
+	public ArrayList<Integer> serviceID() {
+		Connect();
+		String sqlp = "select sid from service;";
+		ArrayList<Integer> ids = new ArrayList<Integer>();
+		try {
+			s = conn.createStatement();
+			rs = s.executeQuery(sqlp);
+			while(rs.next()) {
+				ids.add(rs.getInt("sid"));
+
+			}
+		}catch(SQLException e) {
+			System.out.println("Problem");
+		}
+		return ids;
+	}
 	
 	
 	
