@@ -21,7 +21,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class SignUp extends JFrame {
+public class AddUser extends JFrame {
 	
 	
 	private static CheckMethods check = new CheckMethods();
@@ -50,7 +50,7 @@ public class SignUp extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SignUp frame = new SignUp();
+					AddUser frame = new AddUser();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -62,7 +62,7 @@ public class SignUp extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SignUp() {
+	public AddUser() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -288,12 +288,6 @@ public class SignUp extends JFrame {
 		textField_10.setBounds(130, 224, 84, 19);
 		contentPane.add(textField_10);
 	}
-	
-	
-	//
-	
-	
-	
 	
 	
 	
