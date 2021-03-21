@@ -7,10 +7,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import frontend.Notification;
+
 public class DBMethods {
 	private Statement s = null;
 	private Connection conn = null;
 	private ResultSet rs = null;
+	private Notification noti = new Notification();
 
 	
 	
@@ -40,6 +43,23 @@ public class DBMethods {
 		newID = ids.get(size-1) + 1;
 		
 		return newID;
+	}
+	
+	
+	public void deleteRecord(String needTable, String nameOFTheIDFiled, int ID) {
+		//Validation
+		if(needTable.equals("admin") != false || needTable.equals("services") != false || needTable.equals("users") !=false ) {
+			System.out.println("OK");
+		}else {
+			noti.CustomNotification("Nem létezõ tábla", 0);
+		}
+		
+		
+		
+		//Delete
+		
+		
+		
 	}
 	
 	

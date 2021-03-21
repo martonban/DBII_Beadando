@@ -60,8 +60,8 @@ public class DevTool extends JFrame {
 		JButton btnNewButton = new JButton("Enter");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//dbm.CommandExecute(sqlField.getText());
-				System.out.println(dbm.signIn("karvaszki22", "erosjelszo"));
+				dbm.deleteRecord("eede", "fasd", 4);
+
 				
 			}
 		});
