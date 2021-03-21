@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 public class CheckMethods {
 	
-	
+	//############################################################################	
 	//ArrayList Realtied
 	
 	public boolean exsitInArrayList(ArrayList<Integer> arr, int need) {
@@ -32,7 +32,7 @@ public class CheckMethods {
 	
 	
 	
-
+	//############################################################################
 	// Credit Card Related Methods
 	
 	public static boolean isThatCVV(int cvv) {
@@ -45,7 +45,6 @@ public class CheckMethods {
 	
 	
 	public static boolean isThatFourNumber(String strNum) {
-		System.out.println("IN");
 		boolean check = true;
 		int d = 0;
 		if (strNum == null) {
@@ -71,9 +70,61 @@ public class CheckMethods {
 		return check;
 	}
 	
+	public static boolean isThatPartOne(String strNum) {
+		boolean check = true;
+		int d = 0;
+		if (strNum == null) {
+			CustomNotification("Nincs input", 0);
+	        return false;
+	    }
+	    try {
+	        d = Integer.parseInt(strNum);
+	    } catch (NumberFormatException nfe) {
+			CustomNotification("Rossz Formátum", 0);
+	        return false;
+	    }
+		
+	    d = Integer.parseInt(strNum);
+	    System.out.println(d);
+		if(d > 0 && d < 13) {
+			System.out.println("Cool");
+		}else {
+			CustomNotification("Hónapok számát használhatja", 2);
+			return false;
+		}
+		
+		return check;
+	}
 	
 	
+	public static boolean isThatPartTwo(String strNum) {
+		boolean check = true;
+		int d = 0;
+		if (strNum == null) {
+			CustomNotification("Nincs input", 0);
+	        return false;
+	    }
+	    try {
+	        d = Integer.parseInt(strNum);
+	    } catch (NumberFormatException nfe) {
+			CustomNotification("Rossz Formátum", 0);
+	        return false;
+	    }
+		
+	    d = Integer.parseInt(strNum);
+	    System.out.println(d);
+		if(d > 20 && d < 40) {
+			System.out.println("Cool");
+		}else {
+			CustomNotification("Évek számát használhatja", 2);
+			return false;
+		}
+		
+		return check;
+	}
 	
+	
+	//############################################################################	
 	// Basic Data Type
 	
 	public static boolean isThatInt(String strNum) {
@@ -100,7 +151,7 @@ public class CheckMethods {
 		return true;
 	}
 
-	
+	//############################################################################	
 	//Notificaton
 	
 	public static void CustomNotification(String msg, int sign) {

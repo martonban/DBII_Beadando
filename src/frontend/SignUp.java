@@ -36,9 +36,9 @@ public class SignUp extends JFrame {
 	private JTextField usernameTextField;
 	private JTextField pswdField;
 	private JTextField serviceField;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
+	private JTextField cvvField;
+	private JTextField validPartOne;
+	private JTextField validPartTwo;
 	private JTextField textField_10;
 
 	/**
@@ -77,7 +77,8 @@ public class SignUp extends JFrame {
 				String username = usernameTextField.getText();
 				String pswd = pswdField.getText();
 				
-				//Service ID
+				//############################################################################
+				//Service ID check
 				String serviceID = serviceField.getText();
 				int sID = 0;
 				if(check.isThatInt(serviceID)) {
@@ -95,32 +96,80 @@ public class SignUp extends JFrame {
 					canInsert = false;
 					wrongInputNotification();
 				}
-				
+				//############################################################################
 				//Card Number
-				
+				String cardNumberFinal = null;
 				String cardNumber1 = cardNumberPart1Field.getText();
 				String cardNumber2 = cardNumberPart2Field.getText();
 				String cardNumber3 = cardNumberPart3Field.getText();
 				String cardNumber4 = cardNumberPart4Field.getText();
 				
 				if(check.isThatFourNumber(cardNumber1) && check.isThatFourNumber(cardNumber2) && check.isThatFourNumber(cardNumber3) && check.isThatFourNumber(cardNumber4)) {
-					String cardNumberFinal = cardNumber1 + "-" + cardNumber2 + "-" + cardNumber3 + "-" +cardNumber4;
+					cardNumberFinal = cardNumber1 + "-" + cardNumber2 + "-" + cardNumber3 + "-" +cardNumber4;
 					System.out.println(cardNumberFinal);
 				}else {
 					canInsert = false;
 				}
 				
 				
+				//############################################################################
 				//Validation
+				String validFinal = null;
+				String validNumber1 = validPartOne.getText();
+				String validNumber2 = validPartTwo.getText();
+				int subed = 1;
+				if(check.isThatPartOne(validNumber1) && check.isThatPartTwo(validNumber2)) {
+					validFinal = validNumber1 + "/" + validNumber2;
+					System.out.println(validFinal);
+				}else {
+					canInsert = false;
+				}
 				
 				
 				
-				//More
+				//############################################################################
+				//CVV
+				int finalCvv = 0;
+				String CVV = cvvField.getText();
+				if(check.isThatInt(CVV)) {
+					int cvvNum = Integer.parseInt(CVV);
+					if(check.isThatCVV(cvvNum)) {
+						finalCvv = cvvNum; 
+					}else {
+						CustomNotification("A CVV nem 3 számjegyû", 0);
+						canInsert = false;
+					}
+				}else {
+					CustomNotification("A CVV kód nem szám típusú", 0);
+					canInsert = false;
+				}
 				
-				//Insert
+				//############################################################################
+				//MORE
+				
+				//Dátum
+				String date = null; 
+				if(check.isThatDate(textField_10.getText())) {
+					date = textField_10.getText();
+					System.out.println(date);
+				}else {
+					CustomNotification("Nem dátum típúsú (dd.MM.yyyy)", 0);
+					canInsert = false;
+				}
 				
 				
+				//ID kiosztás
+				int id = dbm.makeNewID("users", "uid");
+				System.out.println(id);
+				//############################################################################
+				//INSERT
+				String sqlp = "insert into users values (" + id + ", '" + username + "', '" + pswd + "' , " + sID + ", '" + date + "', '" + cardNumberFinal + "', '"+ validFinal +"', "+ finalCvv +", "+ id +");";
+				System.out.println(sqlp);
 				
+				if(canInsert != false) {
+					dbm.CommandExecute(sqlp);
+					CustomNotification("Sikeres felvitel", 1);
+				}
 				
 				
 				
@@ -214,20 +263,20 @@ public class SignUp extends JFrame {
 		lblCvv.setBounds(10, 199, 32, 13);
 		contentPane.add(lblCvv);
 		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		textField_7.setBounds(130, 199, 32, 19);
-		contentPane.add(textField_7);
+		cvvField = new JTextField();
+		cvvField.setColumns(10);
+		cvvField.setBounds(130, 199, 32, 19);
+		contentPane.add(cvvField);
 		
-		textField_8 = new JTextField();
-		textField_8.setColumns(10);
-		textField_8.setBounds(10, 162, 32, 19);
-		contentPane.add(textField_8);
+		validPartOne = new JTextField();
+		validPartOne.setColumns(10);
+		validPartOne.setBounds(10, 162, 32, 19);
+		contentPane.add(validPartOne);
 		
-		textField_9 = new JTextField();
-		textField_9.setColumns(10);
-		textField_9.setBounds(84, 163, 32, 19);
-		contentPane.add(textField_9);
+		validPartTwo = new JTextField();
+		validPartTwo.setColumns(10);
+		validPartTwo.setBounds(84, 163, 32, 19);
+		contentPane.add(validPartTwo);
 		
 		JLabel lblCvv_1 = new JLabel("El\u0151fizet\u00E9s kezdete:");
 		lblCvv_1.setFont(new Font("Tahoma", Font.PLAIN, 13));

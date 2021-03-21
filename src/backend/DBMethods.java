@@ -14,8 +14,34 @@ public class DBMethods {
 	
 	
 	
-	//###################
+	//############################################################################
 	//Methods
+	
+	
+	public int makeNewID(String needTable, String nameOFTheIDFiled) {
+		Connect();
+		String sqlp = "select "+ nameOFTheIDFiled + " from " + needTable +";";
+		ArrayList<Integer> ids = new ArrayList<Integer>();
+		try {
+			s = conn.createStatement();
+			rs = s.executeQuery(sqlp);
+			while(rs.next()) {
+				ids.add(rs.getInt(nameOFTheIDFiled));
+
+			}
+		}catch(SQLException e) {
+			System.out.println("Problem");
+		}
+		
+		
+		int newID = 0;
+		int size = ids.size();
+		newID = ids.get(size-1) + 1;
+		
+		return newID;
+	}
+	
+	
 	
 	public int signIn(String name, String pswd) {
 		Connect();
@@ -56,7 +82,7 @@ public class DBMethods {
 	
 	
 	
-	//###################
+	//############################################################################
 	//Basic Stuff
 	
 	
