@@ -11,6 +11,7 @@ public class DBMethods {
 	private Statement s = null;
 	private Connection conn = null;
 	private ResultSet rs = null;
+
 	
 	
 	
@@ -125,7 +126,6 @@ public class DBMethods {
 		try {
 			s = conn.createStatement();
 			s.execute(sqlp);
-			System.out.println("Done!");
 		}catch(SQLException e) {
 			System.out.println("Problem: " + e);
 		}

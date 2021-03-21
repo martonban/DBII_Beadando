@@ -25,7 +25,8 @@ public class AddUser extends JFrame {
 	
 	
 	private static CheckMethods check = new CheckMethods();
-	private static DBMethods dbm = new DBMethods(); 
+	private static DBMethods dbm = new DBMethods();
+
 	
 
 	private JPanel contentPane;
@@ -73,9 +74,25 @@ public class AddUser extends JFrame {
 		JButton btnNewButton = new JButton("Add User");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//User/Pswd Validation and canInsert declaration
 				boolean canInsert = true;
 				String username = usernameTextField.getText();
 				String pswd = pswdField.getText();
+				
+				if(username.equals("")) {
+					canInsert = false;
+					CustomNotification("Nincs megadva felhasználó név", 0);
+				}
+				
+				if(pswd.equals("")) {
+					canInsert = false;
+					CustomNotification("Nincs megadva a jelszó", 0);
+				}
+				
+				
+				System.out.println(canInsert);
+				
+				
 				
 				//############################################################################
 				//Service ID check
@@ -94,7 +111,7 @@ public class AddUser extends JFrame {
 
 				}else {
 					canInsert = false;
-					wrongInputNotification();
+					CustomNotification("Hiba a Szolgáltatás ID-nál", 0);
 				}
 				//############################################################################
 				//Card Number
@@ -109,6 +126,7 @@ public class AddUser extends JFrame {
 					System.out.println(cardNumberFinal);
 				}else {
 					canInsert = false;
+					CustomNotification("Probléma a kártya számnál", 0);
 				}
 				
 				
@@ -123,6 +141,7 @@ public class AddUser extends JFrame {
 					System.out.println(validFinal);
 				}else {
 					canInsert = false;
+					CustomNotification("Probléma a lejárati dátumnál", 0);
 				}
 				
 				

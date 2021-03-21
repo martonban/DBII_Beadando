@@ -63,6 +63,7 @@ public class SignIn extends JDialog {
 		JButton btnNewButton = new JButton("Sign In");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				String username = usernameField.getText();
 				String pswd = passwordField.getText();
 				int succses = dbm.signIn(username, pswd);
