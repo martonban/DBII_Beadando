@@ -14,6 +14,7 @@ public class DBMethods {
 	private Connection conn = null;
 	private ResultSet rs = null;
 	private Notification noti = new Notification();
+	private CheckMethods check = new CheckMethods();
 
 	
 	
@@ -46,18 +47,44 @@ public class DBMethods {
 	}
 	
 	
-	public void deleteRecord(String needTable, String nameOFTheIDFiled, int ID) {
+	public void deleteRecord(String needTable, String nameOFTheIDFiled, int id) {
+		boolean canDelete = true; 
 		//Validation
-		if(needTable.equals("admin") != false || needTable.equals("services") != false || needTable.equals("users") !=false ) {
-			System.out.println("OK");
-		}else {
-			noti.CustomNotification("Nem létezõ tábla", 0);
+		
+		if(needTable.equals("services")) {
+			noti.CustomNotification("A 'szolgáltatás' nem törölhetõ", 0);
+			noti.CustomNotification("Kérem vegye fel a kapcsolatott az idõhiányos egyetemistával", 0);
+			noti.CustomNotification("Vagy használja a: 'delete from services where sid  = ;' parancsot :)", 0);
+			
 		}
 		
 		
+		if(needTable.equals("admin") != false  || needTable.equals("users") !=false ) {
+			System.out.println("OK");
+		}else {
+			canDelete = false;
+			noti.CustomNotification("Nem létezõ tábla", 0);
+		}
 		
+		if(nameOFTheIDFiled.equals("id") != false || nameOFTheIDFiled.equals("uid") != false) {
+			System.out.println("OK");
+		}else {
+			canDelete = false;
+			noti.CustomNotification("Nem létezõ mezõ", 0);
+		}
+		
+		
+		if(id<0) {
+			canDelete = false;
+			noti.CustomNotification("Nem értelmezhetõ ID", 0);
+		}
+
 		//Delete
-		
+		if(canDelete == true) {
+			String sqlp = "delete from " + needTable + " where "+nameOFTheIDFiled+"  = " + id + ";";
+			CommandExecute2(sqlp);
+
+		}
 		
 		
 	}
@@ -152,6 +179,16 @@ public class DBMethods {
 		
 	}
 	
-	
+	public void CommandExecute2(String str) {
+		Connect();
+		String sqlp = str;
+		try {
+			s = conn.createStatement();
+			s.execute(sqlp);
+		}catch(SQLException e) {
+			noti.CustomNotification("Nem létezõ tábla mezõ kombináció", 0);
+		}
+		
+	}
 
 }

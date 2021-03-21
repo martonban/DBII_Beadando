@@ -30,8 +30,6 @@ public class CheckMethods {
 	}
 	
 	
-	
-	
 	//############################################################################
 	// Credit Card Related Methods
 	

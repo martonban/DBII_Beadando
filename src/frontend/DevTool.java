@@ -60,7 +60,8 @@ public class DevTool extends JFrame {
 		JButton btnNewButton = new JButton("Enter");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dbm.deleteRecord("eede", "fasd", 4);
+
+				dbm.deleteRecord("services", "id", 9);
 
 				
 			}
