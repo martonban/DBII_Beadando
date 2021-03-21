@@ -52,9 +52,8 @@ public class DBMethods {
 		//Validation
 		
 		if(needTable.equals("services")) {
-			noti.CustomNotification("A 'szolgáltatás' nem törölhetõ", 0);
-			noti.CustomNotification("Kérem vegye fel a kapcsolatott az idõhiányos egyetemistával", 0);
-			noti.CustomNotification("Vagy használja a: 'delete from services where sid  = ;' parancsot :)", 0);
+			noti.CustomNotification("A 'szolgáltatás' nem törölhetõ vegye fel a kapcsolatott az üzemltetõvel!", 0);
+
 			
 		}
 		
