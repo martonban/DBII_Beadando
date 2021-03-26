@@ -47,6 +47,42 @@ public class DBMethods {
 	}
 	
 	
+	
+	public UserTM ReadAllUsers() {
+		Object usertm[] = {"Jel","Uid","Név","Jelszo","Elõfizetés","Kezdet", "Kártyaszám", "Érvényeség", "CVV", "Subed?"};
+		UserTM utm = new UserTM(usertm, 0);
+		String username="", pass="", begin="", cardnumber="", valid="";
+		int uid=0, sid=0, cvv=0, subed=0;
+		String sqlp = "select uid, username, pass, sid, begin, cardnumber, valid, cvv, subed from users";
+		Connect();
+		try {
+			s = conn.createStatement();
+			rs = s.executeQuery(sqlp);
+			while(rs.next()) {
+				uid= rs.getInt("uid");
+				username = rs.getString("username");
+				pass = rs.getString("pass");
+				begin = rs.getString("begin");
+				cardnumber = rs.getString("cardnumber");
+				valid = rs.getString("valid");
+				sid= rs.getInt("sid");
+				cvv= rs.getInt("cvv");
+				subed= rs.getInt("subed");
+				utm.addRow(new Object[] {false, uid, username, pass, sid, begin, cardnumber, valid, cvv, subed});
+				
+			}
+			rs.close();
+		}catch(SQLException e) {
+			System.out.println("asd");
+		}
+		disConnect();
+		return utm;
+	}
+	
+	
+	
+	
+	
 	public void deleteRecord(String needTable, String nameOFTheIDFiled, int id) {
 		boolean canDelete = true; 
 		//Validation
