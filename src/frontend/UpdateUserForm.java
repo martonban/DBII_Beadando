@@ -1,34 +1,28 @@
 package frontend;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import backend.CheckMethods;
 import backend.DBMethods;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.awt.event.ActionEvent;
-
-public class AddUser extends JFrame {
-	
+public class UpdateUserForm extends JDialog {
 	
 	private static CheckMethods check = new CheckMethods();
 	private static DBMethods dbm = new DBMethods();
-
 	
-
 	private JPanel contentPane;
 	private JTextField cardNumberPart1Field;
 	private JTextField cardNumberPart2Field;
@@ -41,31 +35,26 @@ public class AddUser extends JFrame {
 	private JTextField validPartOne;
 	private JTextField validPartTwo;
 	private JTextField textField_10;
-
-	
-	public static void main(String[] args) {
-		dbm.Reg();
-		dbm.Connect();
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AddUser frame = new AddUser();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 	
 
-	public AddUser() {
+	
+	public UpdateUserForm(int id) {
+		setBounds(100, 100, 450, 300);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		
+		dbm.Reg();
+		dbm.Connect();
+		
+		
+		
+
+		
 		
 		JButton btnNewButton = new JButton("Add User");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -319,5 +308,4 @@ public class AddUser extends JFrame {
 	public void notExsitingIDNotification() {
 		JOptionPane.showMessageDialog(null, "Nem létezõ elemre hivatkozik!", "Vigyázat!", 0);
 	}
-	
 }

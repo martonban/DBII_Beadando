@@ -154,7 +154,6 @@ public class DBMethods {
 			rs = s.executeQuery(sqlp);
 			while(rs.next()) {
 				ids.add(rs.getInt("sid"));
-
 			}
 		}catch(SQLException e) {
 			System.out.println("Problem");
@@ -162,7 +161,34 @@ public class DBMethods {
 		return ids;
 	}
 	
-	
+	public User getUser(int id) {
+		User user;
+		String username="", pass="", begin="", cardnumber="", valid="";
+		int uid=0, sid=0, cvv=0, subed=0;
+		String sqlp = "select uid, username, pass, sid, begin, cardnumber, valid, cvv, subed from users where uid = "+id+";";
+		Connect();
+		try {
+			s = conn.createStatement();
+			rs = s.executeQuery(sqlp);
+			while(rs.next()) {
+				uid= rs.getInt("uid");
+				username = rs.getString("username");
+				pass = rs.getString("pass");
+				begin = rs.getString("begin");
+				cardnumber = rs.getString("cardnumber");
+				valid = rs.getString("valid");
+				sid= rs.getInt("sid");
+				cvv= rs.getInt("cvv");
+				subed= rs.getInt("subed");
+			}
+			rs.close();
+		}catch(SQLException e) {
+			System.out.println("Problem");
+		}
+		
+		user = new User(uid, username, pass, sid, begin, cardnumber, valid, cvv, subed);
+		return user;
+	}
 	
 	
 	//############################################################################
