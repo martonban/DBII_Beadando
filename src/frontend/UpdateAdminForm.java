@@ -76,6 +76,7 @@ public class UpdateAdminForm extends JDialog {
 					String pass = passwordField.getText();
 					String sqlp = "update admin set pass = '"+pass+"' where id = "+id;
 					dbm.CommandExecute(sqlp);
+					noti.CustomNotification("A jelszavak nem egyeznek meg", 0);
 				}
 				else {
 					noti.CustomNotification("A jelszavak nem egyeznek meg", 0);

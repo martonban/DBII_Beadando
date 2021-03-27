@@ -59,6 +59,7 @@ public class UserList extends JDialog {
 		TableRowSorter<UserTM> trs = (TableRowSorter<UserTM>)table.getRowSorter();
 		trs.setSortable(0, false);
 
-
+		Object emptmn[] = {"Jel","Uid","Név","Jelszo","Elõfizetés","Kezdet", "Kártyaszám", "Érvényeség", "CVV", "Subed?"};
+		utm = new UserTM(emptmn, 10);
 	}
 }

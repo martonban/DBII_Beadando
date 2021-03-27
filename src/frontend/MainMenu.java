@@ -55,7 +55,7 @@ public class MainMenu extends JDialog {
 		btnListUser.setBounds(10, 96, 112, 30);
 		getContentPane().add(btnListUser);
 		
-		JButton btnUpdateUser = new JButton("Update User");
+		JButton btnUpdateUser = new JButton("Update Admin");
 		btnUpdateUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UpdateAdmin uu = new UpdateAdmin();
@@ -66,10 +66,20 @@ public class MainMenu extends JDialog {
 		btnUpdateUser.setBounds(10, 142, 112, 30);
 		getContentPane().add(btnUpdateUser);
 		
+		JButton btnListByPrice = new JButton("List By Price");
+		btnListByPrice.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListServiceByPriceForm lsbp = new ListServiceByPriceForm();
+				lsbp.setVisible(true);
+			}
+		});
+		btnListByPrice.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnListByPrice.setBounds(10, 184, 112, 30);
+		getContentPane().add(btnListByPrice);
+		
 		Object emptmn[] = {"Jel","Uid","Név","Jelszo","Elõfizetés","Kezdet", "Kártyaszám", "Érvényeség", "CVV", "Subed?"};
 		utm = new UserTM(emptmn, 10);
 
 
 	}
-
 }

@@ -96,6 +96,33 @@ public class DBMethods {
 	}
 	
 	
+	public ServiceTM ReadAllService(int min, int max) {
+		Object stmt[] = {"Jel","Sid","Név","Ár"};
+		ServiceTM stm = new ServiceTM(stmt, 0);
+		String username="";
+		int id=0,  ar=0;
+		String sqlp = "select sid, sname, price from services where price<=" + max + " and price>=" + min;
+		Connect();
+		try {
+			s = conn.createStatement();
+			rs = s.executeQuery(sqlp);
+			while(rs.next()) {
+				id= rs.getInt("sid");
+				username = rs.getString("sname");
+				ar= rs.getInt("price");
+				stm.addRow(new Object[] {false, id, username, ar});
+				
+			}
+			rs.close();
+		}catch(SQLException e) {
+			System.out.println("asd");
+		}
+		disConnect();
+		return stm;
+	}
+	
+	
+	
 	
 	
 	
@@ -148,7 +175,6 @@ public class DBMethods {
 		}catch(SQLException e) {
 			System.out.println(e.getMessage());
 		}
-		disConnect();
 		return pc;
 	}
 	
