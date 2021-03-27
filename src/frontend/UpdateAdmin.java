@@ -10,12 +10,12 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class UpdateUser extends JDialog {
+public class UpdateAdmin extends JDialog {
 	private JTextField textField;
 	private Notification noti;
 	
 	
-	public UpdateUser() {
+	public UpdateAdmin() {
 		setBounds(100, 100, 250, 200);
 		getContentPane().setLayout(null);
 		
@@ -39,7 +39,7 @@ public class UpdateUser extends JDialog {
 				}catch(NumberFormatException e1) {
 					noti.CustomNotification("Nem átalakítható", 0);
 				}
-				UpdateUserForm uuf = new UpdateUserForm(requestID);
+				UpdateAdminForm uuf = new UpdateAdminForm(requestID);
 				uuf.setVisible(true);
 			}
 		});

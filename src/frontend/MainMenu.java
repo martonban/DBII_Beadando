@@ -58,7 +58,7 @@ public class MainMenu extends JDialog {
 		JButton btnUpdateUser = new JButton("Update User");
 		btnUpdateUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UpdateUser uu = new UpdateUser();
+				UpdateAdmin uu = new UpdateAdmin();
 				uu.setVisible(true);
 			}
 		});

@@ -32,18 +32,34 @@ public class DBMethods {
 			rs = s.executeQuery(sqlp);
 			while(rs.next()) {
 				ids.add(rs.getInt(nameOFTheIDFiled));
-
 			}
 		}catch(SQLException e) {
 			System.out.println("Problem");
 		}
-		
 		
 		int newID = 0;
 		int size = ids.size();
 		newID = ids.get(size-1) + 1;
 		
 		return newID;
+	}
+	
+	
+	
+	public String getAdminNameWithID(int aid) {
+		Connect();
+		String sqlp = "select name from admin where id = '" + aid +"';";
+		String name = null;
+		try {
+			s = conn.createStatement();
+			rs = s.executeQuery(sqlp);
+			while(rs.next()) {
+				name = rs.getString("name");
+			}
+		}catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return name;
 	}
 	
 	
@@ -89,10 +105,7 @@ public class DBMethods {
 		
 		if(needTable.equals("services")) {
 			noti.CustomNotification("A 'szolgáltatás' nem törölhetõ vegye fel a kapcsolatott az üzemltetõvel!", 0);
-
-			
 		}
-		
 		
 		if(needTable.equals("admin") != false  || needTable.equals("users") !=false ) {
 			System.out.println("OK");
@@ -108,20 +121,15 @@ public class DBMethods {
 			noti.CustomNotification("Nem létezõ mezõ", 0);
 		}
 		
-		
 		if(id<0) {
 			canDelete = false;
 			noti.CustomNotification("Nem értelmezhetõ ID", 0);
 		}
-
 		//Delete
 		if(canDelete == true) {
 			String sqlp = "delete from " + needTable + " where "+nameOFTheIDFiled+"  = " + id + ";";
 			CommandExecute2(sqlp);
-
 		}
-		
-		
 	}
 	
 	
@@ -161,6 +169,7 @@ public class DBMethods {
 		return ids;
 	}
 	
+	/*
 	public User getUser(int id) {
 		User user;
 		String username="", pass="", begin="", cardnumber="", valid="";
@@ -189,7 +198,7 @@ public class DBMethods {
 		user = new User(uid, username, pass, sid, begin, cardnumber, valid, cvv, subed);
 		return user;
 	}
-	
+	*/
 	
 	//############################################################################
 	//Basic Stuff
