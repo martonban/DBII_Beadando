@@ -129,25 +129,21 @@ public class DBMethods {
 	public void deleteRecord(String needTable, String nameOFTheIDFiled, int id) {
 		boolean canDelete = true; 
 		//Validation
-		
 		if(needTable.equals("services")) {
 			noti.CustomNotification("A 'szolgáltatás' nem törölhetõ vegye fel a kapcsolatott az üzemltetõvel!", 0);
 		}
-		
 		if(needTable.equals("admin") != false  || needTable.equals("users") !=false ) {
 			System.out.println("OK");
 		}else {
 			canDelete = false;
 			noti.CustomNotification("Nem létezõ tábla", 0);
 		}
-		
 		if(nameOFTheIDFiled.equals("id") != false || nameOFTheIDFiled.equals("uid") != false) {
 			System.out.println("OK");
 		}else {
 			canDelete = false;
 			noti.CustomNotification("Nem létezõ mezõ", 0);
 		}
-		
 		if(id<0) {
 			canDelete = false;
 			noti.CustomNotification("Nem értelmezhetõ ID", 0);

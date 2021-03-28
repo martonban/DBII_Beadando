@@ -28,15 +28,10 @@ public class UpdateAdminForm extends JDialog {
 	private JPasswordField passwordField;
 	private JPasswordField passwordField_1;
 	
-	
-	
-	
-	
-
-	
 	public UpdateAdminForm(int id) {
 		dbm.Reg();
 		dbm.Connect();
+
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		
@@ -51,7 +46,7 @@ public class UpdateAdminForm extends JDialog {
 		getContentPane().add(ChangeName);
 
 		ChangeName.setText(dbm.getAdminNameWithID(id));
-		
+
 		passwordField = new JPasswordField();
 		passwordField.setBounds(10, 88, 220, 19);
 		getContentPane().add(passwordField);
@@ -73,24 +68,18 @@ public class UpdateAdminForm extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				String passs1 = passwordField.getText(); 
 				String passs2 = passwordField_1.getText();
-				if(passs1.equals(passs2)) {
+				if(passs1.equals(passs2) ) {
 					String sqlp = "update admin set pass = '"+passs1+"' where id = "+id;
 					dbm.CommandExecute(sqlp);
 					noti.CustomNotification("Sikeres változtatás", 1);
-					dispose();
 				}
 				else {
 					noti.CustomNotification("A jelszavak nem egyeznek meg", 0);
 				}
-				
-				
-				
 			}
 		});
 		btnNewButton.setBounds(341, 232, 85, 21);
 		getContentPane().add(btnNewButton);
-		
-		
 		
 	}
 }

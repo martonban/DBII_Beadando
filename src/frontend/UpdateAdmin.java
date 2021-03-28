@@ -6,6 +6,9 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+
+import backend.DBMethods;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -13,9 +16,11 @@ import java.awt.event.ActionEvent;
 public class UpdateAdmin extends JDialog {
 	private JTextField textField;
 	private Notification noti;
-	
+	private static DBMethods dbm = new DBMethods();	
 	
 	public UpdateAdmin() {
+		dbm.Reg();
+		dbm.Connect();
 		setBounds(100, 100, 250, 200);
 		getContentPane().setLayout(null);
 		
@@ -37,11 +42,22 @@ public class UpdateAdmin extends JDialog {
 				try {
 					requestID = Integer.parseInt(text);
 				}catch(NumberFormatException e1) {
-					noti.CustomNotification("Nem átalakítható", 0);
+					noti.CustomNotification("Nem átalakítható vagy nics megadva semmi", 0);
 				}
-				UpdateAdminForm uuf = new UpdateAdminForm(requestID);
-				uuf.setVisible(true);
-				dispose();
+				
+				//LUSTA LÉTEZÉS ELLENÖRZÉS :D
+				try {
+					String name = dbm.getAdminNameWithID(requestID);
+					if(name.equals("")) {
+						System.out.println("Csak hogy ne legyen üres a true ág");
+					}else {
+						UpdateAdminForm uuf = new UpdateAdminForm(requestID);
+						uuf.setVisible(true);
+						dispose();
+					}
+				}catch(NullPointerException e2){
+					noti.CustomNotification("Nem létezõ felhasználó", 0);
+				}
 			}
 		});
 		btnNewButton.setBounds(10, 132, 83, 21);

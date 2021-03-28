@@ -104,7 +104,7 @@ public class MainMenu extends JDialog {
 		btnAddUser.setBounds(10, 80, 112, 30);
 		getContentPane().add(btnAddUser);
 		
-		JButton btnSzolgltas = new JButton("Szolg\u00E1lta\u00E1s");
+		JButton btnSzolgltas = new JButton("Szolg\u00E1ltat\u00E1s");
 		btnSzolgltas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AddService addservice = new AddService();

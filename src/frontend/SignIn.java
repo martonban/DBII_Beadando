@@ -74,7 +74,7 @@ public class SignIn extends JDialog {
 					mainmenu.setVisible(true);
 					dispose();
 				}else {
-					noti.CustomNotification("Sikertelen Bejelentkezés", succses);
+					noti.CustomNotification("Sikertelen Bejelentkezés", 0);
 				}
 				
 			}
@@ -88,7 +88,7 @@ public class SignIn extends JDialog {
 		
 		JLabel lblNewLabel_1 = new JLabel("Bejelentkez\u00E9s");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1.setBounds(10, 21, 155, 13);
+		lblNewLabel_1.setBounds(10, 10, 155, 27);
 		getContentPane().add(lblNewLabel_1);
 		
 		JButton btnSignUp = new JButton("Regisztr\u00E1ci\u00F3");

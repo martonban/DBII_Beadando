@@ -94,7 +94,8 @@ public class AddService extends JDialog {
 		btnNewButton.setBounds(341, 232, 85, 21);
 		getContentPane().add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Kil\u00E9p\u00E9s");
+		JButton btnNewButton_1 = new JButton("Vissza");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.ITALIC, 10));
 		btnNewButton_1.setBounds(247, 232, 85, 21);
 		getContentPane().add(btnNewButton_1);
 
