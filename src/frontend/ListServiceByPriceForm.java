@@ -82,6 +82,7 @@ public class ListServiceByPriceForm extends JDialog {
 					stm = dbm.ReadAllService(minimum, maximum);
 					ServiceList sl = new ServiceList(ListServiceByPriceForm.this, stm);
 					sl.setVisible(true);
+					dispose();
 				}
 				
 			}

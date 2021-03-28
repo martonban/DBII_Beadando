@@ -18,7 +18,7 @@ public class SignIn extends JDialog {
 	private JTextField usernameField;
 	private static DBMethods dbm = new DBMethods(); 
 	private JPasswordField passwordField;
-
+	private Notification noti = new Notification();
 	/**
 	 * Launch the application.
 	 */
@@ -69,8 +69,11 @@ public class SignIn extends JDialog {
 				int succses = dbm.signIn(username, pswd);
 				if(succses == 1) {
 					System.out.println("Sikeres Bejentekezés");
+					MainMenu mainmenu = new MainMenu();
+					mainmenu.setVisible(true);
+					dispose();
 				}else {
-					System.out.println("Sikertlen Bejelntkezés");
+					noti.CustomNotification("Sikertelen Bejelentkezés", succses);
 				}
 				
 			}
@@ -86,6 +89,16 @@ public class SignIn extends JDialog {
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel_1.setBounds(10, 21, 86, 13);
 		getContentPane().add(lblNewLabel_1);
+		
+		JButton btnSignUp = new JButton("Sign Up");
+		btnSignUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SignUp signup = new SignUp();
+				signup.setVisible(true);
+			}
+		});
+		btnSignUp.setBounds(341, 232, 85, 21);
+		getContentPane().add(btnSignUp);
 
 	}
 }

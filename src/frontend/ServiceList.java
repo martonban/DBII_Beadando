@@ -12,6 +12,8 @@ import backend.UserTM;
 
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ServiceList extends JDialog {
 	private JTable table;
@@ -31,7 +33,12 @@ public class ServiceList extends JDialog {
 		table = new JTable(stm);
 		scrollPane.setViewportView(table);
 		
-		JButton btnNewButton = new JButton("Close");
+		JButton btnNewButton = new JButton("Bez\u00E1r\u00E1s");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnNewButton.setBounds(217, 232, 85, 21);
 		getContentPane().add(btnNewButton);
 

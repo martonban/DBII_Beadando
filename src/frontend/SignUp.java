@@ -21,28 +21,7 @@ public class SignUp extends JDialog {
 	private static DBMethods dbm = new DBMethods();
 	private Notification noti = new Notification(); 
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		dbm.Reg();
-		dbm.Connect();
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SignUp dialog = new SignUp();
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the dialog.
-	 */
+	
 	public SignUp() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
@@ -112,6 +91,11 @@ public class SignUp extends JDialog {
 		getContentPane().add(btnNewButton);
 		
 		JButton btnClose = new JButton("Close");
+		btnClose.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnClose.setBounds(246, 232, 85, 21);
 		getContentPane().add(btnClose);
 

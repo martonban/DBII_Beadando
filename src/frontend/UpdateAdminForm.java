@@ -71,12 +71,13 @@ public class UpdateAdminForm extends JDialog {
 		JButton btnNewButton = new JButton("Update");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				if(passwordField.getText().equals(passwordField_1.getText())) {
-					String pass = passwordField.getText();
-					String sqlp = "update admin set pass = '"+pass+"' where id = "+id;
+				String passs1 = passwordField.getText(); 
+				String passs2 = passwordField_1.getText();
+				if(passs1.equals(passs2)) {
+					String sqlp = "update admin set pass = '"+passs1+"' where id = "+id;
 					dbm.CommandExecute(sqlp);
-					noti.CustomNotification("A jelszavak nem egyeznek meg", 0);
+					noti.CustomNotification("Sikeres változtatás", 1);
+					dispose();
 				}
 				else {
 					noti.CustomNotification("A jelszavak nem egyeznek meg", 0);

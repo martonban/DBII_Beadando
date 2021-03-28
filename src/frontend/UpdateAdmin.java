@@ -41,6 +41,7 @@ public class UpdateAdmin extends JDialog {
 				}
 				UpdateAdminForm uuf = new UpdateAdminForm(requestID);
 				uuf.setVisible(true);
+				dispose();
 			}
 		});
 		btnNewButton.setBounds(10, 132, 75, 21);
