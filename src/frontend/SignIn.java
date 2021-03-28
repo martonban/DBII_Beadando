@@ -45,22 +45,23 @@ public class SignIn extends JDialog {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Username:");
+		JLabel lblNewLabel = new JLabel("Felhaszn\u00E1l\u00F3n\u00E9v:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblNewLabel.setBounds(10, 58, 86, 13);
+		lblNewLabel.setBounds(10, 58, 116, 13);
 		getContentPane().add(lblNewLabel);
 		
-		JLabel lblPassword = new JLabel("Password:");
+		JLabel lblPassword = new JLabel("Jelsz\u00F3:");
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblPassword.setBounds(10, 95, 86, 13);
 		getContentPane().add(lblPassword);
 		
 		usernameField = new JTextField();
-		usernameField.setBounds(113, 56, 116, 19);
+		usernameField.setBounds(151, 55, 116, 19);
 		getContentPane().add(usernameField);
 		usernameField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Sign In");
+		JButton btnNewButton = new JButton("Bel\u00E9p\u00E9s");
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 10));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -82,15 +83,16 @@ public class SignIn extends JDialog {
 		getContentPane().add(btnNewButton);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(113, 90, 116, 19);
+		passwordField.setBounds(151, 89, 116, 19);
 		getContentPane().add(passwordField);
 		
-		JLabel lblNewLabel_1 = new JLabel("Sing In:");
+		JLabel lblNewLabel_1 = new JLabel("Bejelentkez\u00E9s");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1.setBounds(10, 21, 86, 13);
+		lblNewLabel_1.setBounds(10, 21, 155, 13);
 		getContentPane().add(lblNewLabel_1);
 		
-		JButton btnSignUp = new JButton("Sign Up");
+		JButton btnSignUp = new JButton("Regisztr\u00E1ci\u00F3");
+		btnSignUp.setFont(new Font("Tahoma", Font.ITALIC, 9));
 		btnSignUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SignUp signup = new SignUp();
@@ -99,6 +101,16 @@ public class SignIn extends JDialog {
 		});
 		btnSignUp.setBounds(341, 232, 85, 21);
 		getContentPane().add(btnSignUp);
+		
+		JButton btnKilps = new JButton("Kil\u00E9p\u00E9s");
+		btnKilps.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		btnKilps.setFont(new Font("Tahoma", Font.ITALIC, 9));
+		btnKilps.setBounds(246, 232, 85, 21);
+		getContentPane().add(btnKilps);
 
 	}
 }

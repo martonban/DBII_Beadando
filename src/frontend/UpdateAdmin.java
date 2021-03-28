@@ -29,7 +29,7 @@ public class UpdateAdmin extends JDialog {
 		getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Find");
+		JButton btnNewButton = new JButton("Keres\u00E9s");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String text = textField.getText();
@@ -44,7 +44,7 @@ public class UpdateAdmin extends JDialog {
 				dispose();
 			}
 		});
-		btnNewButton.setBounds(10, 132, 75, 21);
+		btnNewButton.setBounds(10, 132, 83, 21);
 		getContentPane().add(btnNewButton);
 	}
 }

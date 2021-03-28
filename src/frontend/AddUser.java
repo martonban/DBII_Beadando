@@ -41,22 +41,8 @@ public class AddUser extends JFrame {
 	private JTextField validPartOne;
 	private JTextField validPartTwo;
 	private JTextField textField_10;
+	private JButton btnClose;
 
-	
-	public static void main(String[] args) {
-		dbm.Reg();
-		dbm.Connect();
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AddUser frame = new AddUser();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 	
 
 	public AddUser() {
@@ -302,6 +288,16 @@ public class AddUser extends JFrame {
 		textField_10.setColumns(10);
 		textField_10.setBounds(130, 224, 84, 19);
 		contentPane.add(textField_10);
+		
+		btnClose = new JButton("Close");
+		btnClose.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnClose.setFont(new Font("Tahoma", Font.ITALIC, 9));
+		btnClose.setBounds(253, 220, 60, 21);
+		contentPane.add(btnClose);
 	}
 	
 	

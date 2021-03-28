@@ -40,7 +40,7 @@ public class UpdateAdminForm extends JDialog {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Admin name is:");
+		JLabel lblNewLabel = new JLabel("Admin neve");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel.setBounds(10, 10, 153, 19);
 		getContentPane().add(lblNewLabel);
@@ -56,11 +56,11 @@ public class UpdateAdminForm extends JDialog {
 		passwordField.setBounds(10, 88, 220, 19);
 		getContentPane().add(passwordField);
 		
-		JLabel lblNewLabel_1 = new JLabel("Password:");
+		JLabel lblNewLabel_1 = new JLabel("Jelsz\u00F3:");
 		lblNewLabel_1.setBounds(10, 70, 81, 13);
 		getContentPane().add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Password Again:");
+		JLabel lblNewLabel_1_1 = new JLabel("Jelsz\u00F3 \u00DAjra:");
 		lblNewLabel_1_1.setBounds(10, 130, 109, 13);
 		getContentPane().add(lblNewLabel_1_1);
 		
@@ -68,7 +68,7 @@ public class UpdateAdminForm extends JDialog {
 		passwordField_1.setBounds(10, 148, 220, 19);
 		getContentPane().add(passwordField_1);
 		
-		JButton btnNewButton = new JButton("Update");
+		JButton btnNewButton = new JButton("Friss\u00EDt\u00E9s");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String passs1 = passwordField.getText(); 

@@ -30,7 +30,7 @@ public class UserList extends JDialog {
 		setBounds(100, 100, 850, 300);
 		getContentPane().setLayout(null);
 		
-		JButton btnBezaras = new JButton("Bez\u00E1r\u00E1s");
+		JButton btnBezaras = new JButton("Vissza");
 		btnBezaras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose(); 

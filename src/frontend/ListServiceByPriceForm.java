@@ -28,9 +28,9 @@ public class ListServiceByPriceForm extends JDialog {
 		setBounds(100, 100, 350, 230);
 		getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("List Services By Price");
+		JLabel lblNewLabel = new JLabel("Szolg\u00E1ltat\u00E1s list\u00E1z\u00E1sa \u00E1r alapj\u00E1n");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblNewLabel.setBounds(10, 10, 194, 29);
+		lblNewLabel.setBounds(10, 10, 291, 29);
 		getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Minimum:");
@@ -53,7 +53,7 @@ public class ListServiceByPriceForm extends JDialog {
 		lblNewLabel_1_1.setBounds(209, 63, 77, 14);
 		getContentPane().add(lblNewLabel_1_1);
 		
-		JButton btnNewButton = new JButton("GO");
+		JButton btnNewButton = new JButton("Mehet");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean a = true;

@@ -33,7 +33,7 @@ public class ServiceList extends JDialog {
 		table = new JTable(stm);
 		scrollPane.setViewportView(table);
 		
-		JButton btnNewButton = new JButton("Bez\u00E1r\u00E1s");
+		JButton btnNewButton = new JButton("Vissza");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();

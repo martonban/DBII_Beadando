@@ -23,43 +23,44 @@ public class SignUp extends JDialog {
 
 	
 	public SignUp() {
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 250);
 		getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Sign Up As An Admin:");
+		JLabel lblNewLabel = new JLabel("Regisztr\u00E1ci\u00F3:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel.setBounds(10, 10, 152, 20);
 		getContentPane().add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Username:");
+		JLabel lblNewLabel_1 = new JLabel("Felhaszn\u00E1l\u00F3n\u00E9v:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lblNewLabel_1.setBounds(10, 47, 71, 13);
+		lblNewLabel_1.setBounds(10, 47, 106, 13);
 		getContentPane().add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Password:");
+		JLabel lblNewLabel_1_1 = new JLabel("Jelsz\u00F3:");
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lblNewLabel_1_1.setBounds(10, 69, 71, 13);
 		getContentPane().add(lblNewLabel_1_1);
 		
-		JLabel lblNewLabel_1_1_1 = new JLabel("Passwod again:");
+		JLabel lblNewLabel_1_1_1 = new JLabel("Jelsz\u00F3 megint:");
 		lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lblNewLabel_1_1_1.setBounds(10, 92, 106, 13);
 		getContentPane().add(lblNewLabel_1_1_1);
 		
 		usernameFiled = new JTextField();
-		usernameFiled.setBounds(120, 44, 116, 19);
+		usernameFiled.setBounds(169, 41, 116, 19);
 		getContentPane().add(usernameFiled);
 		usernameFiled.setColumns(10);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(120, 66, 116, 19);
+		passwordField.setBounds(169, 63, 116, 19);
 		getContentPane().add(passwordField);
 		
 		passwordFieldAgain = new JPasswordField();
-		passwordFieldAgain.setBounds(120, 89, 116, 19);
+		passwordFieldAgain.setBounds(169, 86, 116, 19);
 		getContentPane().add(passwordFieldAgain);
 		
-		JButton btnNewButton = new JButton("Sign Up");
+		JButton btnNewButton = new JButton("Regisztr\u00E1ci\u00F3");
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 10));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//############################################################################
@@ -68,6 +69,7 @@ public class SignUp extends JDialog {
 				String userName = usernameFiled.getText();
 				String pswd1 = passwordField.getText();
 				String pswd2 = passwordFieldAgain.getText();
+
 				int id = dbm.makeNewID("admin", "id");
 				
 				//############################################################################
@@ -76,6 +78,12 @@ public class SignUp extends JDialog {
 					canInsert = false;
 					noti.CustomNotification("A jelszó nem egyezik meg!", 0);
 				}
+				
+				if(userName.equals("") || pswd1.equals("") || pswd2.equals("")) {
+					canInsert = false;
+					noti.CustomNotification("Nincs bemnet!", 0);
+				}
+				
 				//############################################################################
 				//Insert
 				String sqlp = "insert into admin values (" + id + ", '" + userName + "', '" + pswd1 + "');";
@@ -87,24 +95,20 @@ public class SignUp extends JDialog {
 				
 			}
 		});
-		btnNewButton.setBounds(341, 232, 85, 21);
+		
+		btnNewButton.setBounds(320, 182, 106, 21);
 		getContentPane().add(btnNewButton);
 		
-		JButton btnClose = new JButton("Close");
+		JButton btnClose = new JButton("Vissza");
+		btnClose.setFont(new Font("Tahoma", Font.ITALIC, 9));
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
-		btnClose.setBounds(246, 232, 85, 21);
+		btnClose.setBounds(225, 182, 85, 21);
 		getContentPane().add(btnClose);
 
 	}
-	
-	//############################################################################
-	//Notification
-	
-	
-	
 	
 }

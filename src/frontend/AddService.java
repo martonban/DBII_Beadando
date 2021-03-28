@@ -21,25 +21,7 @@ public class AddService extends JDialog {
 	private Notification noti = new Notification();
 	private CheckMethods check = new CheckMethods();
 	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		dbm.Reg();
-		dbm.Connect();
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AddService dialog = new AddService();
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the dialog.
 	 */

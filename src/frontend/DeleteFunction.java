@@ -49,42 +49,42 @@ public class DeleteFunction extends JDialog {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Delete User:");
+		JLabel lblNewLabel = new JLabel("T\u00F6rl\u00E9s");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNewLabel.setBounds(10, 10, 119, 19);
 		getContentPane().add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Name of the table");
+		JLabel lblNewLabel_1 = new JLabel("T\u00E1bla N\u00E9v");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_1.setBounds(10, 54, 129, 13);
 		getContentPane().add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Name of the field");
+		JLabel lblNewLabel_1_1 = new JLabel("Mez\u0151 n\u00E9v");
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_1_1.setBounds(160, 54, 119, 13);
+		lblNewLabel_1_1.setBounds(150, 54, 119, 13);
 		getContentPane().add(lblNewLabel_1_1);
 		
-		JLabel lblNewLabel_1_1_1 = new JLabel("ID Number (int)");
+		JLabel lblNewLabel_1_1_1 = new JLabel("ID");
 		lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_1_1_1.setBounds(307, 54, 119, 13);
 		getContentPane().add(lblNewLabel_1_1_1);
 		
 		tableField = new JTextField();
-		tableField.setBounds(20, 77, 96, 19);
+		tableField.setBounds(10, 77, 96, 19);
 		getContentPane().add(tableField);
 		tableField.setColumns(10);
 		
 		fieldField = new JTextField();
-		fieldField.setBounds(170, 77, 96, 19);
+		fieldField.setBounds(150, 77, 96, 19);
 		getContentPane().add(fieldField);
 		fieldField.setColumns(10);
 		
 		idField = new JTextField();
-		idField.setBounds(317, 77, 96, 19);
+		idField.setBounds(307, 77, 96, 19);
 		getContentPane().add(idField);
 		idField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Delete");
+		JButton btnNewButton = new JButton("T\u00F6rl\u00E9s");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean canDelete = true; 
@@ -103,8 +103,8 @@ public class DeleteFunction extends JDialog {
 				
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnNewButton.setBounds(10, 106, 85, 21);
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+		btnNewButton.setBounds(10, 121, 85, 21);
 		getContentPane().add(btnNewButton);
 		
 		JLabel lblNewLabel_1_2 = new JLabel("T\u00E1bl\u00E1k szerkezete:");
