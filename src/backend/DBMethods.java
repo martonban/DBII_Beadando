@@ -2,6 +2,7 @@ package backend;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,6 +14,7 @@ public class DBMethods {
 	private Statement s = null;
 	private Connection conn = null;
 	private ResultSet rs = null;
+	private PreparedStatement ps;
 	private Notification noti = new Notification();
 	private CheckMethods check = new CheckMethods();
 
@@ -62,6 +64,26 @@ public class DBMethods {
 		return name;
 	}
 	
+	
+	
+	public void addSercive(ArrayList<Service> arr) {
+		Connect();
+		int pc = 0;
+		String sqlp = "insert into services(sid, sname, price) " + "values(?,?,?)";
+		try {
+			ps = conn.prepareStatement(sqlp);
+			for(int i = 0; i<arr.size(); i++) {
+				ps.setInt(1, makeNewID("services", "sid"));
+				ps.setString(2, arr.get(i).getSname());
+				ps.setInt(3, arr.get(i).getPrice());
+				ps.execute();
+				pc++;
+			}
+			noti.CustomNotification("Ennyi solgáltás hozzá lett adva: " + pc, 1);
+		}catch(SQLException e) {
+			noti.CustomNotification(e.getMessage(), 0);
+		}
+	}
 	
 	
 	public UserTM ReadAllUsers() {

@@ -9,9 +9,11 @@ import javax.swing.JTextField;
 
 import backend.CheckMethods;
 import backend.DBMethods;
+import backend.Service;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class AddService extends JDialog {
@@ -20,13 +22,13 @@ public class AddService extends JDialog {
 	private static DBMethods dbm = new DBMethods();
 	private Notification noti = new Notification();
 	private CheckMethods check = new CheckMethods();
-	
+	private ArrayList<Service> arr = new ArrayList<Service>();
 	
 	/**
 	 * Create the dialog.
 	 */
 	public AddService() {
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 413, 214);
 		getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Add Service: ");
@@ -54,8 +56,29 @@ public class AddService extends JDialog {
 		priceField.setBounds(63, 66, 116, 19);
 		getContentPane().add(priceField);
 		
-		JButton btnNewButton = new JButton("Besz\u00FAr\u00E1s");
+		JButton btnNewButton = new JButton("V\u00E9gleges\u00EDt\u00E9s");
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 10));
 		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dbm.addSercive(arr);
+				
+			}
+		});
+		btnNewButton.setBounds(276, 149, 110, 21);
+		getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Vissza");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.ITALIC, 10));
+		btnNewButton_1.setBounds(181, 149, 85, 21);
+		getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Hozz\u00E1ad\u00E1s");
+		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Declaration
 				boolean canInsert = true;
@@ -83,22 +106,16 @@ public class AddService extends JDialog {
 				
 				//Insert
 				if(canInsert == true) {
-					String sqlp = "insert into services values (" + id + ", '" + username + "', " + price + ");";
-					dbm.CommandExecute(sqlp);
+					Service service = new Service(id, username, price);
+					arr.add(service);
+					service = null;
+					noti.CustomNotification("Hozzáadva a tömbhöz", 1);
 				}
-				
-				
-				
 			}
 		});
-		btnNewButton.setBounds(341, 232, 85, 21);
-		getContentPane().add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("Vissza");
-		btnNewButton_1.setFont(new Font("Tahoma", Font.ITALIC, 10));
-		btnNewButton_1.setBounds(247, 232, 85, 21);
-		getContentPane().add(btnNewButton_1);
+		btnNewButton_2.setFont(new Font("Tahoma", Font.ITALIC, 8));
+		btnNewButton_2.setBounds(10, 105, 85, 21);
+		getContentPane().add(btnNewButton_2);
 
 	}
-
 }
