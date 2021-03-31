@@ -103,7 +103,8 @@ public class AddUser extends JFrame {
 				String cardNumber3 = cardNumberPart3Field.getText();
 				String cardNumber4 = cardNumberPart4Field.getText();
 				
-				if(check.isThatFourNumber(cardNumber1) && check.isThatFourNumber(cardNumber2) && check.isThatFourNumber(cardNumber3) && check.isThatFourNumber(cardNumber4)) {
+				if(check.isThatFourNumber(cardNumber1) && check.isThatFourNumber(cardNumber2) 
+						&& check.isThatFourNumber(cardNumber3) && check.isThatFourNumber(cardNumber4)) {
 					cardNumberFinal = cardNumber1 + "-" + cardNumber2 + "-" + cardNumber3 + "-" +cardNumber4;
 					System.out.println(cardNumberFinal);
 				}else {
@@ -164,7 +165,9 @@ public class AddUser extends JFrame {
 				System.out.println(id);
 				//############################################################################
 				//INSERT
-				String sqlp = "insert into users values (" + id + ", '" + username + "', '" + pswd + "' , " + sID + ", '" + date + "', '" + cardNumberFinal + "', '"+ validFinal +"', "+ finalCvv +", "+ id +");";
+				String sqlp = "insert into users values (" + id + ", '" + username + "', '" + pswd +
+						"' , " + sID + ", '" + date + "', '" + cardNumberFinal + "', '"+ validFinal +"', "
+						+ finalCvv +", "+ id +");";
 				System.out.println(sqlp);
 				
 				if(canInsert != false) {

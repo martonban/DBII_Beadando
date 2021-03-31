@@ -86,7 +86,7 @@ public class SignUp extends JDialog {
 				
 				//############################################################################
 				//Insert
-				String sqlp = "insert into admin values (" + id + ", '" + userName + "', '" + pswd1 + "');";
+				String sqlp = "insert into admin values (" + id + ", '" + userName + "', '" + pswd1 + "', 30, 500000);";
 				if(canInsert == true) {
 					dbm.CommandExecute(sqlp);
 					noti.CustomNotification("Sikeres felvitel!", 1);
